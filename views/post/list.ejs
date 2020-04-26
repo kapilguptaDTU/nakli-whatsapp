@@ -1,0 +1,44 @@
+
+<%- include ("../partials/header") %> 
+
+<h3><a class="btn btn-secondary"href="/employee"><i class="fa fa-plus"></i>Create New Employee</a><a class="btn btn-success" href="/employee/list">See all employees</a>
+    Post List</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Post Name</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Edit/delete post</th>
+            <th>View profile and posts</th>
+        
+        </tr>
+    </thead>
+    
+    <tbody>
+
+        <% posts.forEach(function(post){ %>
+        <tr>
+                
+            <td><%=post.name%></td>
+            <td><%=post.image%></td>
+            <td><%=post.description%></td>
+            <td><%=post.employees[0].name%></td>
+            <td>
+                <a href="/post/<%=post._id%>/update"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/post/delete/<%=post._id%>" onclick="return confirm('Are you sure to delete this record?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+               
+            </td>
+            <td>
+                    <a class="btn btn-success" href="/post/<%= post._id %>">VIEW </a>
+                      
+            </td>  
+        </tr>
+        
+ <% }); %>
+    </tbody>
+</table>
+
+<%- include ("../partials/footer") %> 

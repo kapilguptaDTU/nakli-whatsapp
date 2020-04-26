@@ -29,6 +29,16 @@ app.set('view engine','ejs');
 app.use(express.static(__dirname + "/public"));
 
 
+app.get("/2048",function(req,res){
+ 
+    res.render("2048.ejs");
+   });
+app.get("/snakes",function(req, res) {
+       res.render("snakesandladders.ejs");
+})
+  
+
+
 //..............................................
 
 //..............................................
@@ -37,8 +47,25 @@ app.use(express.static(__dirname + "/public"));
 
 //..............................................
 
+   
+app.get('/',(req,res)=>{
+    // res.json('from list');
+    Employee.find({},(err,docs)=>{
+    if(!err)
+    {
+        res.render("employee/list",{
+            employees:docs
+        });
+    }
+    else{
+        console.log('Error while retrieving employee list :'+err);
+    
+    }
+    }).lean();
+}) ;
+    
 // GET FORM TO INSERT/UPDATE
-
+ 
 app.get('/employee',(req,res)=>{
     // res.json('HI there');
     res.render("employee/addOrEdit",{
@@ -195,7 +222,7 @@ app.get("/employee/:id", function(req, res){
         } else {
             console.log(foundEmployee)
             //render show template with that campground
-            res.render("employee/show", {employee: foundEmployee});
+            res.render("employee/showproper", {employee: foundEmployee});
         }
     });
 });
@@ -235,7 +262,23 @@ app.get('/employee/delete/:id',(req,res)=>{
 
 // ...................................................
 
-
+   
+app.get('/posts',(req,res)=>{
+    // res.json('from list');
+    Post.find({},(err,docs)=>{
+    if(!err)
+    {
+        res.render("post/list",{
+            posts:docs
+        });
+    }
+    else{
+        console.log('Error while retrieving post list :'+err);
+    
+    }
+    }).lean();
+}) ;
+ 
 
 app.get("/employee/:id/post/new", function(req, res){
     // find employee by id

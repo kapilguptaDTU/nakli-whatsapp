@@ -1,0 +1,50 @@
+<%- include ("../partials/header") %>
+
+ <div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">DBMS APP</p>
+            <div class="list-group">
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <div class="caption-full">
+                    <h4 class="pull-right">HELLO!</h4>
+                    <h4><a><%=employee.fullName%></a></h4>
+                    <p><%= employee.email %></p>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                        <a class="btn btn-success" href="/employee/list">See all employees</a>
+                        <a class="btn btn-success" href="/posts">See all posts</a>
+                            
+                        <a class="btn btn-success" href="/employee/<%= employee._id %>/post/new">Add New Post</a>
+                    </div>
+                    </div>
+        </div>
+    </div>
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% employee.posts.forEach(function(post){ %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                   <img src="<%= post.image %>">
+                   <div class="caption">
+                       <h4><%= post.name %></h4>
+                   </div>
+                   <p>
+                    <a class="btn btn-success" href="/post/<%= post._id %> ">Show Post</a>
+                   </p>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+</div>
+
+<%- include ("../partials/footer") %>
+
