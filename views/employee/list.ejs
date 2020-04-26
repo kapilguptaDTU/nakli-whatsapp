@@ -1,0 +1,43 @@
+
+<%- include ("../partials/header") %> 
+
+<h3><a class="btn btn-secondary"href="/employee"><i class="fa fa-plus"></i>Create New</a>Employee List</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>City</th>
+            <th>Edit/delete employee</th>
+            <th>View profile and posts</th>
+        
+        </tr>
+    </thead>
+    
+    <tbody>
+
+        <% employees.forEach(function(employee){ %>
+        <tr>
+                
+            <td><%=employee.fullName%></td>
+            <td><%=employee.email%></td>
+            <td><%=employee.mobile%></td>
+            <td><%=employee.city%></td>
+            <td>
+                <a href="/employee/<%=employee._id%>/update"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/employee/delete/<%=employee._id%>" onclick="return confirm('Are you sure to delete this record?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+               
+            </td>
+            <td>
+                    <a class="btn btn-success" href="/employee/<%= employee._id %>">VIEW</a>
+                      
+            </td>  
+        </tr>
+        
+ <% }); %>
+    </tbody>
+</table>
+
+<%- include ("../partials/footer") %> 

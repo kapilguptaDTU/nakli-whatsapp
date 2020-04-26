@@ -1,0 +1,266 @@
+
+
+
+
+body{
+    background-image: url("bg.jpg");
+}
+.container_center_align {
+    display: flex;
+    /*    position: absolute;*/
+    justify-content: center;
+    /*    margin-top: 10vh;*/
+    /*    flex-direction: column-reverse;*/
+    /*    align-items:flex-end;*/
+}
+
+.square {
+    position: relative;
+    height: 100px;
+    width: 300px;
+    border: 2px solid black;
+}
+
+.indicatorandscreen {
+    display: flex;
+    z-index: -2;
+    margin-top: 10px;
+    justify-content: center;
+    /*    margin-left: auto;*/
+    /*    justify-content: space-around;*/
+    margin-bottom: 20px;
+    ;
+}
+
+.indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.mystyle {
+    background-color: blue;
+}
+.flexer{
+    
+    z-index: 1;
+    position: fixed;
+    
+    height: 100%;
+    width: 100%;
+    display: flex;
+/*    margin: 30px;*/
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.pa{    justify-content: center;
+    align-items: center;
+}
+.play-again{
+    background-color: #1a1515d1;
+    width: 85vw;
+    /* height: 50vh; */
+    text-align: center;
+    padding: 18%;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+/* .centermeilao{
+    
+} */
+/* ....................navbar.................. */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+  
+  .active {
+    background-color: #4CAF50;
+  }
+
+  /* ....................................navbar end */
+
+
+.play-again p{
+
+    font-size: 40px;
+    color: white;
+
+
+}
+
+/* .play-again div{
+
+} */
+
+.play-again a{
+
+    color: white;
+    /* background-color: #4CAF50; */
+    /* display: block; */
+    /* color: white; */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 6vh;
+}
+
+.play-again a button{
+background-color: green;
+}
+.screen {
+    display: flex;
+/*    justify-content: center;*/
+    width: 560px;
+    height: 100px;
+    overflow: hidden;
+    font-family: cursive;
+    font-size: 40px;
+    background-color: darkgray;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    word-wrap: break-word;
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+}
+
+.screen-red {
+    border: 2px solid red;
+    display: flex;
+    width: 280px;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen-blue {
+    border: 2px solid blue;
+    display: flex;
+    width: 280px;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    height: 600px;
+    width: 600px;
+    border-radius: 20px;
+    /*background-color: rgb(30, 24, 62);;*/
+    background-image: url(main.png);
+    display: flex;
+    margin-left: 60px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-size: contain;
+    /*    background-attachment: fixed;*/
+    position: fixed;
+    /*    background-repeat: no-repeat;*/
+}
+
+.pawn {
+    top: 593px;
+    left: 353px;
+    background-color:red;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /*    align-self:flex-end;*/
+    /*    justify-content: flex-start;*/
+    z-index: 1;
+    position: fixed;
+    /*    top: 10px;*/
+}
+
+.pawnb {
+    top: 593px;
+    left: 353px;
+    background-color: blue;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    /*    align-self:flex-end;*/
+    /*    justify-content: flex-start;*/
+    z-index: 1;
+    position: fixed;
+    /*    top: 10px;*/
+}
+
+.shift_to_center {
+    height: 600px;
+    width: 600px;
+    border-radius: 20px;
+    /*background-color: rgb(30, 24, 62);;*/
+    /*    background-image: url(../snakesandladder_small.png);*/
+    display: flex;
+    flex: 1 1 0;
+    /*    margin-left: 60px;*/
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    /*    background-size: contain;*/
+    /*    background-attachment: fixed;*/
+    height: 511px;
+    width: 460px;
+    justify-content: center;
+    align-items: center;
+    /*    background-repeat: no-repeat;*/
+}
+
+.box {
+    border-radius: 10%;
+    /*    height: 100%;*/
+    /*    width: 100%;*/
+    font-size: 35px;
+    font-style: italic;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border-radius: 20%;
+    height: 86px;
+    width: 86px;
+/*    background-color: #ffffff85;*/
+    /*    background-color: aqua*/
+}
+
+.blued {
+/*    background-color: #E4E4D0;*/
+
+    color: blue;
+}
+
+.redd {
+/*    background-color: #E4E4D0;*/
+    color: red;
+}
