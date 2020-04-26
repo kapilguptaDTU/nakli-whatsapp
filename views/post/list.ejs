@@ -25,7 +25,7 @@
             <td><%=post.name%></td>
             <td><%=post.image%></td>
             <td><%=post.description%></td>
-            <td><%=post.employees[0].name%></td>
+            <td><%=post.author%></td>
             <td>
                 <a href="/post/<%=post._id%>/update"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
                 <a href="/post/delete/<%=post._id%>" onclick="return confirm('Are you sure to delete this record?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>

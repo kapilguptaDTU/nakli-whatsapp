@@ -18,13 +18,14 @@ app.use(bodyparser.urlencoded({
     extended:true
 }));
 
-mongoose.connect('mongodb://localhost:27017/MongoApp_V3',{useNewUrlParser: true},(err)=>{
+mongoose.connect('mongodb://localhost:27017/MongoApp_V3',{useUnifiedTopology: true,useNewUrlParser: true},(err)=>{
    if(!err){console.log('MongoDB connection successful')}
    else{console.log('Error in DB connection'+err)}
 
 
 });
 
+mongoose.set('useFindAndModify', false);
 app.set('view engine','ejs');
 app.use(express.static(__dirname + "/public"));
 
@@ -79,8 +80,8 @@ app.get('/employee',(req,res)=>{
 // POST REQ FROM THE NEW FORM    
 
 app.post('/employee',(req,res)=>{
-    console.log("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-    console.log(req.body._id);
+    // console.log("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+    // console.log(req.body._id);
     if(req.body._id=='')
     insertRecord(req,res);
     else
@@ -95,7 +96,7 @@ function insertRecord(req,res){
         employee.email=req.body.email;
         employee.mobile=req.body.mobile;
         employee.city=req.body.city;
-        console.log("Emp"+employee);
+        // console.log("Emp"+employee);
         // console.log("Employee id="+req.body._id);
         // console.log("req.body.email="+req.body.email);
     
@@ -220,7 +221,7 @@ app.get("/employee/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(foundEmployee)
+            // console.log(foundEmployee)
             //render show template with that campground
             res.render("employee/showproper", {employee: foundEmployee});
         }
@@ -304,7 +305,13 @@ app.post("/employee/:id/post", function(req, res){
            } else {
                employee.posts.push(post);
                post.employees.push(employee);
+               console.log("employee");
+               
+               post.author=employee.fullName;
+               console.log(employee.fullName);
+               
                post.save();
+               console.log(post.author);
                employee.save();
                res.redirect('/employee/' + employee._id);
            }
@@ -326,8 +333,8 @@ app.get("/post/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(foundPost.comments);
-            console.log(foundPost.employees[0]);
+            // console.log(foundPost.comments);
+            // console.log(foundPost.employees[0]);
             
             //render show template with that campground
             res.render("post/show", {post: foundPost});
@@ -372,8 +379,9 @@ app.get('/post/delete/:id',(req,res)=>{
     
     Post.findByIdAndRemove(req.params.id,(err,doc)=>{
         if(!err)
-        {   console.log('sadasdassdaaddddddddddddddddddddddddddddddddddddd'+doc);
-        console.log('sadasdassdaaddddddddddddddddddddddddddddddddddddd'+doc.employees);
+        {  
+        //      console.log('sadasdassdaaddddddddddddddddddddddddddddddddddddd'+doc);
+        // console.log('sadasdassdaaddddddddddddddddddddddddddddddddddddd'+doc.employees);
         
         // console.log('sadasdassdaaddddddddddddddddddddddddddddddddddddd'+doc.employee);
         
@@ -427,8 +435,8 @@ app.post("/post/:id/comment", function(req, res){
                console.log(err);
            } else {
                post.comments.push(comment);
-               console.log("commenttttttttttttttttttttttttttttttttttttttttt"+comment);
-               console.log("postssssssssDDDDDDDDDDDDDDDDDDDD"+post);
+            //    console.log("commenttttttttttttttttttttttttttttttttttttttttt"+comment);
+            //    console.log("postssssssssDDDDDDDDDDDDDDDDDDDD"+post);
                comment.posts.push(post);
                post.save();
                comment.save();
@@ -453,8 +461,8 @@ app.get("/post/:id", function(req, res){
         if(err){
             console.log(err);
         } else {
-            console.log(foundPost.comments);
-            console.log(foundPost.employees[0]);
+            // console.log(foundPost.comments);
+            // console.log(foundPost.employees[0]);
             
             //render show template with that campground
             res.render("post/show", {post: foundPost});
