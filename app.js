@@ -32,7 +32,18 @@ app.use(express.static(__dirname + "/public"));
 
 app.get("/2048",function(req,res){
  
-    res.render("2048.ejs");
+    Employee.find({},(err,docs)=>{
+        if(!err)
+        {
+            res.render("2048.ejs",{
+                employees:docs
+            });
+        }
+        else{
+            console.log('Error while retrieving employee list :'+err);
+        
+        }
+        }).lean();
    });
 app.get("/snakes",function(req, res) {
        res.render("snakesandladders.ejs");

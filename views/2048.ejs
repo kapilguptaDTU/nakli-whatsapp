@@ -1,0 +1,119 @@
+<html >
+    <head>
+        <title></title>
+          <link rel="stylesheet" type="text/css" href="/stylesheets/2048style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/Untitled.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    </head>
+    <body class="bg-info">
+
+        
+<ul>
+        <li><a class="active" href="#">2048</a></li>
+        <li><a href="https://github.com/kapilguptaDTU">GitHub</a></li>
+        <li><a href="https://drive.google.com/open?id=10rse2RrHe0QHMqX61V8ZGDU8eLTHkEgU">My Resume</a></li>
+        <li style="float:right"><a class="active" href="https://kapilguptadtu.github.io/Web-Store/">My Web Store</a></li>
+      </ul>
+      
+
+        <div class="maindiv">
+       <div class="score_center_align">  <div class="score" ></div><div class="highscore"></div></div>
+       <div class="container_center_align"> 
+           <!-- <img src="https://i.ytimg.com/vi/g7qAb13k3ys/hqdefault.jpg"> -->
+       <div class="containere iddd" id="idd">
+           
+           
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+           <div class="dabba"><div class="box"></div></div>
+            
+            
+            
+       </div>
+        </div>
+       
+       </div>
+       
+       <div class="row">
+        <div class="col-md-6 offset-md-3" style="background-color:white;margin-top:25px;padding:20px;">       
+<h3><a class="btn btn-secondary"href="/employee"><i class="fa fa-plus"></i>Create New</a>Employee List</h3>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>City</th>
+            <th>Edit/delete employee</th>
+            <th>View profile and posts</th>
+        
+        </tr>
+    </thead>
+    
+    <tbody>
+
+        <% employees.forEach(function(employee){ %>
+        <tr>
+                
+            <td><%=employee.fullName%></td>
+            <td><%=employee.email%></td>
+            <td><%=employee.mobile%></td>
+            <td><%=employee.city%></td>
+            <td>
+                <a href="/employee/<%=employee._id%>/update"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/employee/delete/<%=employee._id%>" onclick="return confirm('Are you sure to delete this record?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+               
+            </td>
+            <td>
+                    <a class="btn btn-success" href="/employee/<%= employee._id %>">VIEW</a>
+                      
+            </td>  
+        </tr>
+        
+ <% }); %>
+    </tbody>
+</table>
+</div>
+</div>
+       
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/touchswipe.js"></script>
+       
+        <script type="text/javascript" src="/js/2048script.js"></script>
+        <script type="text/javascript" src="/js/Untitled.js"></script>
+        
+        <script>
+        baguetteBox.run('.container');
+        // , {
+        // buttons:'auto';
+    // <!--// Custom options-->
+// });
+</script>
+        
+    
+    
+    
+    
+    
+    </body>
+</html>
+
+
