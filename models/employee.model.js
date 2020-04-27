@@ -21,6 +21,10 @@ var employeeSchema=new mongoose.Schema({
     state:{
         type:String
     } ,
+    highscore:{
+        type:String,
+        default:'0'
+    } ,
        posts: [
           {
              type: mongoose.Schema.Types.ObjectId,

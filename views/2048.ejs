@@ -61,7 +61,7 @@
             <th>Full Name</th>
             <th>Email</th>
             <th>Mobile</th>
-            <th>City</th>
+            <th>CityHIGHSCORES</th>
             <th>Edit/delete employee</th>
             <th>View profile and posts</th>
         
@@ -76,7 +76,7 @@
             <td><%=employee.fullName%></td>
             <td><%=employee.email%></td>
             <td><%=employee.mobile%></td>
-            <td><%=employee.city%></td>
+            <td><%=employee.highscore%></td>
             <td>
                 <a href="/employee/<%=employee._id%>/update"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
                 <a href="/employee/delete/<%=employee._id%>" onclick="return confirm('Are you sure to delete this record?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
@@ -101,7 +101,7 @@
         <script type="text/javascript" src="/js/Untitled.js"></script>
         
         <script>
-        baguetteBox.run('.container');
+        baguetteBox.run('.containere');
         // , {
         // buttons:'auto';
     // <!--// Custom options-->

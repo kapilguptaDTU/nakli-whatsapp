@@ -38,10 +38,30 @@
                             <p>
                                 <%= comment.text%>  
                             </p>
-                            
+                            <a class="btn btn-secondary" href="/comment/<%= comment._id %>/reply">Reply on this Comment</a>
+                       <br>   
+                       <hr>                         
                     <a class="btn btn-success" href="/comment/<%= comment._id %>/update">Update Comment</a>
-                    <a class="btn btn-danger" href="/comment/delete/<%= comment._id %>">Delete Comment</a>
-                
+                    <br>   
+                    <hr><a class="btn btn-danger" href="/comment/delete/<%= comment._id %>">Delete Comment</a>
+                    <br>   
+                    <hr><a class="btn btn-danger" href="/comment/<%= comment._id %>">Show all replies on this comment</a>
+                       
+                    <hr>
+                       
+                       <br>   
+                       <hr>
+                       <% comment.childComments.forEach(function(reply){ %>
+                        <strong><%= reply.author %></strong>
+                        <span class="pull-right">1 day agoo</span>
+                        <p>
+                                <%= reply%>
+                            <%= reply.text%>  
+                        </p>
+                        <a class="btn btn-secondary" href="/comment/<%= reply._id %>/reply">Reply on this Reply</a>
+                   <br>   
+                   <hr>     
+                        <% }) %>
                         </div>
                     </div>
                 <% }) %>

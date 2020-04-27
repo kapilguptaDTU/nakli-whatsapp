@@ -348,6 +348,25 @@ app.get("/post/:id", function(req, res){
             // console.log(foundPost.employees[0]);
             
             //render show template with that campground
+            foundPost.comments.forEach(function(childofchild){ 
+            Comment.findById(childofchild).populate("childComments").exec(function(err, foundComment){
+                if(err){
+                    console.log(err);
+                } else {
+                    // console.log(foundPost.comments);
+                    // console.log(foundPost.employees[0]);
+                    
+                    //render show template with that campground
+                    foundComment.populate("childComments");
+                    foundComment.save();
+                    // res.render("comment/show", {parentComment: foundComment});
+                    // res.render("post/show",{post:foundPost});
+                }
+            });
+            
+        });
+            
+            
             res.render("post/show", {post: foundPost});
         }
     });
@@ -435,51 +454,33 @@ app.get("/post/:id/comment/new", function(req, res){
 });
 
 app.post("/post/:id/comment", function(req, res){
-   //lookup employee using ID
-   Post.findById(req.params.id, function(err, post){
-       if(err){
-           console.log(err);
-           res.redirect("/employee/list");
-       } else {
-        Comment.create(req.body.comment, function(err, comment){
-           if(err){
-               console.log(err);
-           } else {
-               post.comments.push(comment);
-            //    console.log("commenttttttttttttttttttttttttttttttttttttttttt"+comment);
-            //    console.log("postssssssssDDDDDDDDDDDDDDDDDDDD"+post);
-               comment.posts.push(post);
-               post.save();
-               comment.save();
-        //    console.log(post.comments);
-               res.redirect('/post/' + post._id);
-            }
-        });
-       }
-   });
-   //create new post
-   //connect new post to employee
-   //redirect employee show page
-});
-
-
-// POST SHOW PAGE
-
-// SHOW - shows more info about one POST
-app.get("/post/:id", function(req, res){
-    //find the campground with provided ID
-    Post.findById(req.params.id).populate("comments").exec(function(err, foundPost){
+    //lookup employee using ID
+    Post.findById(req.params.id, function(err, post){
         if(err){
             console.log(err);
+            res.redirect("/employee/list");
         } else {
-            // console.log(foundPost.comments);
-            // console.log(foundPost.employees[0]);
-            
-            //render show template with that campground
-            res.render("post/show", {post: foundPost});
+         Comment.create(req.body.comment, function(err, comment){
+            if(err){
+                console.log(err);
+            } else {
+                post.comments.push(comment);
+             //    console.log("commenttttttttttttttttttttttttttttttttttttttttt"+comment);
+             //    console.log("postssssssssDDDDDDDDDDDDDDDDDDDD"+post);
+                comment.posts.push(post);
+                post.save();
+                comment.save();
+         //    console.log(post.comments);
+                res.redirect('/post/' + post._id);
+             }
+         });
         }
     });
-});
+    //create new post
+    //connect new post to employee
+    //redirect employee show page
+ });
+ 
 
 
 
@@ -534,7 +535,86 @@ app.get('/comment/delete/:id',(req,res)=>{
    });
 
 
+   app.get('/comment/:id/reply',(req,res)=>{
+    // res.json('HI there');
+    console.log("getting comment/:id/reply");
+    Comment.findById(req.params.id,(err,doc)=>{
+         if(!err)
+         {
+             res.render("comment/replyoncomment",{
+                 viewTitle:"Update Comment",
+                 parentComment:doc,
+                 
+             });
+         }
+    }).lean();
+});
 
+
+
+
+app.post("/comment/:id/replyoncomment", function(req, res){
+    //lookup employee using ID
+    Comment.findById(req.params.id, function(err, parentComment){
+        if(err){
+            console.log(err);
+            res.redirect("/employee/list");
+        } else {
+         Comment.create(req.body.comment, function(err, childComment){
+            if(err){
+                console.log(err);
+            } else {
+             //    console.log("commenttttttttttttttttttttttttttttttttttttttttt"+comment);
+             //    console.log("postssssssssDDDDDDDDDDDDDDDDDDDD"+post);
+             childComment.parentComments.push(parentComment);
+             childComment.posts.push(parentComment.posts[0]);
+             childComment.populate("ChildComments");
+             
+             parentComment.childComments.push(childComment);
+                
+             parentComment.childComments.forEach(function(childofchild){ 
+                //  childofchild.populate("ChildComments");
+                //  childofchild.save();
+                // Comment.findById(childofchild, function(err, foundChild){
+
+                // });
+       
+       
+                console.log("cc"+childofchild);
+             });
+
+             
+             childComment.save();
+                parentComment.save();
+         //    console.log(post.comments);
+                res.redirect('/comment/' + parentComment._id);
+             }
+         });
+        }
+    });
+    //create new reply
+    //connect new reply to comment and post
+    //redirect post show page
+ });
+ 
+
+// SHOW - shows more info about one POST
+app.get("/comment/:id", function(req, res){
+    //find the campground with provided ID
+    Comment.findById(req.params.id).populate("childComments").exec(function(err, parentComment){
+        if(err){
+            console.log(err);
+        } else {
+            // console.log(foundPost.comments);
+            // console.log(foundPost.employees[0]);
+            
+            //render show template with that campground
+            // foundComment.populate("childComments");
+            // foundComment.save();
+            res.render("comment/show", {parentComment: parentComment});
+        }
+    });
+});
 
 
 
