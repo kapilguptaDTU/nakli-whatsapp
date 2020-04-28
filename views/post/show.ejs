@@ -16,8 +16,10 @@
             <div class="thumbnail">
                 <img class="img-responsive" src="<%= post.image %>">
                 <div class="caption-full">
-                    <h4 class="pull-right">$9.00/night</h4>
+                    <h4 class="pull-right">$<%=numReplies%>/night</h4>
                     <h4><a><%=post.name%></a></h4>
+                    <p><%= post._id %></p>
+                    
                     <p><%= post.description %></p>
                     <a class="btn btn-success" href="/post/<%= post._id %>/update">Update Post</a>
                     <a class="btn btn-danger" href="/post/delete/<%= post._id %>">Delete Post</a>
@@ -36,7 +38,8 @@
                             <strong><%= comment.author %></strong>
                             <span class="pull-right">10 days ago</span>
                             <p>
-                                <%= comment.text%>  
+                                <%= comment.text%> 
+                                <p><%= comment._id%> </p> 
                             </p>
                             <a class="btn btn-secondary" href="/comment/<%= comment._id %>/reply">Reply on this Comment</a>
                        <br>   
@@ -51,7 +54,7 @@
                        
                        <br>   
                        <hr>
-                       <% comment.childComments.forEach(function(reply){ %>
+                       <% replies.forEach(function(reply){ %>
                         <strong><%= reply.author %></strong>
                         <span class="pull-right">1 day agoo</span>
                         <p>

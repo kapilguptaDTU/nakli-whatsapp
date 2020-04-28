@@ -18,7 +18,7 @@ app.use(bodyparser.urlencoded({
     extended:true
 }));
 
-mongoose.connect('mongodb://localhost:27017/MongoApp_V3',{useUnifiedTopology: true,useNewUrlParser: true},(err)=>{
+mongoose.connect('mongodb://localhost:27017/MongoApp_V4',{useUnifiedTopology: true,useNewUrlParser: true},(err)=>{
    if(!err){console.log('MongoDB connection successful')}
    else{console.log('Error in DB connection'+err)}
 
@@ -339,35 +339,31 @@ app.post("/employee/:id/post", function(req, res){
 
 // SHOW - shows more info about one POST
 app.get("/post/:id", function(req, res){
+    var allComments=[];
+    var numReplies=0;
     //find the campground with provided ID
     Post.findById(req.params.id).populate("comments").exec(function(err, foundPost){
         if(err){
-            console.log(err);
+            console.log(err); 
         } else {
-            // console.log(foundPost.comments);
-            // console.log(foundPost.employees[0]);
-            
-            //render show template with that campground
-            foundPost.comments.forEach(function(childofchild){ 
-            Comment.findById(childofchild).populate("childComments").exec(function(err, foundComment){
+            foundPost.comments.forEach(function(childofchild){
+console.log("ccc"+childofchild._id+"ccccccccccccccccccccccccccccccccccccccccccccc");
+            Comment.findById(childofchild._id).populate("childComments").exec(function(err, foundReply){
                 if(err){
                     console.log(err);
                 } else {
-                    // console.log(foundPost.comments);
-                    // console.log(foundPost.employees[0]);
-                    
-                    //render show template with that campground
-                    foundComment.populate("childComments");
-                    foundComment.save();
-                    // res.render("comment/show", {parentComment: foundComment});
-                    // res.render("post/show",{post:foundPost});
+                    foundReply.save();
+                    numReplies++;
+                     allComments.push(foundReply);
+                     console.log("hello"+numReplies);
+                     
                 }
             });
             
         });
-            
-            
-            res.render("post/show", {post: foundPost});
+            function a(){res.render("post/show2", {post: foundPost,replies:allComments,numReplies:numReplies}),1000};
+console.log(numReplies);
+setTimeout(a,100);
         }
     });
 });
@@ -439,7 +435,22 @@ app.get('/post/delete/:id',(req,res)=>{
 
 // ...................................................
 
-
+app.get('/comments',(req,res)=>{
+    // res.json('from list');
+    Comment.find({},(err,docs)=>{
+    if(!err)
+    {
+        res.render("comment/list",{
+            comments:docs
+        });
+    }
+    else{
+        console.log('Error while retrieving post list :'+err);
+    
+    }
+    }).lean();
+}) ;
+ 
 
 app.get("/post/:id/comment/new", function(req, res){
     // find post by id

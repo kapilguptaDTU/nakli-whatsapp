@@ -1,0 +1,47 @@
+
+<%- include ("../partials/header") %>
+<h1 style="text-align:center">COMMENTS LIST</h1></div> 
+<div  style="background-color:white;margin-top:25px;padding:20px;padding-left:50px;width:90%;margin-left:5%;">
+
+<h3><a class="btn btn-dark" href="/employee/list">See all employees</a><hr><a class="btn btn-primary" href="/posts">See all posts</a>
+    </h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Comment Author</th>
+            <th>Comment Text</th>
+            <th>Post on which comment was made</th>
+            
+            <th>Edit/delete comment</th>
+            <th>View comment thread</th>
+        
+        </tr>
+    </thead>
+    
+    <tbody>
+
+        <% comments.forEach(function(comment){ %>
+        <tr>
+                
+            <td><%=comment.author%></td>
+            <td><%=comment.text%></td>
+            <td>    
+                 <a class="btn btn-dark" href="/post/<%=comment.posts[0]%> ">VIEW POST</a>
+                </td>
+            <td>
+                <a href="/comment/<%=comment._id%>/update"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/comment/delete/<%=comment._id%>" onclick="return confirm('Are you sure to delete this record?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+               
+            </td>
+            <td>
+                    <a class="btn btn-light" href="/comment/<%= comment._id %>">VIEW COMMENT </a>
+                      
+            </td>  
+        </tr>
+        
+ <% }); %>
+    </tbody>
+</table>
+
+<%- include ("../partials/footer") %> 
