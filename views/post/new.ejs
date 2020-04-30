@@ -1,9 +1,9 @@
 <%- include ("../partials/header") %>
 <div class="container">
     <div class="row">
-        <h1 style="text-align: center">Create a New Post</h1>
+        <h1 style="text-align: center">Create a New Post for User <%=user.username%></h1>
         <div style="width: 30%; margin: 25px auto;">
-            <form action="/employee/<%=employee._id%>/post" method="POST">
+            <form action="/user/<%=user._id%>/post" method="POST">
                 <div class="form-group">
                     <input class="form-control" type="text" name="post[name]" placeholder="name">
                 </div>
@@ -17,7 +17,7 @@
                     <button class="btn btn-lg btn-primary btn-block">Submit!</button>
                 </div>
             </form>
-            <a href="/employee/<%=employee._id%>/">Go Back</a>
+            <a href="/user/<%=user._id%>/">Go Back</a>
         </div>
     </div>
 </div>

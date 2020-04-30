@@ -6,11 +6,18 @@ var postSchema = new mongoose.Schema({
    image: String,
    description: String,
    employees: [
-       {
-         type: mongoose.Schema.Types.ObjectId,
-         ref: "Employee"
-       }
-    ],
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Employee"
+    }
+ ],
+ 
+ users: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
+],
    comments: [
       {
          type: mongoose.Schema.Types.ObjectId,

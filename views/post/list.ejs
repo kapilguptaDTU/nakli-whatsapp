@@ -3,8 +3,8 @@
 <h1 style="text-align:center">POST LIST</h1></div> 
 <div  style="background-color:white;margin-top:25px;padding:20px;padding-left:50px;width:90%;margin-left:5%;">
 
-<h3><a class="btn btn-primary"href="/employee"><i class="fa fa-plus"></i>
-    Create New Employee</a><hr><a class="btn btn-dark" href="/employee/list">See all employees</a>
+<h3><a class="btn btn-primary"href="/register"><i class="fa fa-plus"></i>
+    Create New User</a><hr><a class="btn btn-dark" href="/users">See all users</a>
     <hr><a class="btn btn-light" href="/comments">See all comments</a>
     </h3>
 
@@ -32,7 +32,7 @@
             <td><%=post.author%></td>
             <td>
                 <a href="/post/<%=post._id%>/update"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-                <a href="/post/delete/<%=post._id%>" onclick="return confirm('Are you sure to delete this record?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                <a href="/post/delete/<%=post._id%>" ><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
                
             </td>
             <td>

@@ -1,0 +1,32 @@
+<%- include ("./partials/header") %> 
+
+
+<form action="/register" method="post">
+<div class="form-group">
+    <label >User Name</label>
+    <input type="text" class="form-control" name="username" placeholder="User Name" >
+
+</div>
+<div class="form-group">
+    <label >Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Password" >
+<div class="form-row">
+    <div class="form-group col-md-6">
+    <label >Mobile</label>
+    <input type="text" class="form-control" name="mobile" placeholder="Mobile No." >
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-6">
+    <label >City</label>
+    <input type="text" class="form-control" name="city" placeholder="City" >
+    </div>
+</div>
+<div class="form-group">
+<button type="submit" class="btn btn-info">Sign Up!</button>
+<a class="btn btn-secondary"href="/users"><i class="fa fa-list-alt"></i>View All</a>
+</div>
+</form>
+
+
+<%- include ("./partials/footer") %> 

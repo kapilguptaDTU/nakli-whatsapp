@@ -1,0 +1,25 @@
+<%- include ("../partials/header") %>
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Create a New Post</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/employee/<%=employee._id%>/post" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="post[name]" placeholder="name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="post[image]" placeholder="image url">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="post[description]" placeholder="description">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/employee/<%=employee._id%>/">Go Back</a>
+        </div>
+    </div>
+</div>
+<%- include ("../partials/footer") %>
+

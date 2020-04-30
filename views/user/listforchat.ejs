@@ -1,0 +1,45 @@
+
+<%- include ("../partials/header") %>
+<h1 style="text-align:center">USERS LIST</h1></div> 
+<div  style="background-color:white;margin-top:25px;padding:20px;padding-left:50px;width:90%;margin-left:5%;">
+
+<h3><a class="btn btn-dark"href="/login"><i class="fa fa-plus"></i>
+    LOGIN</a><hr>
+    <a class="btn btn-primary"href="/register"><i class="fa fa-plus"></i>
+    Create New USER</a><hr>
+    <a class="btn btn-dark" href="/users">See all USERS</a>
+    <hr><a class="btn btn-light" href="/posts">See all posts</a>
+    </h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User Id</th>
+            <th>User Name/Email</th>
+            <th>Mobile</th>
+            <th>City</th>
+            <!-- <th>Edit/delete employee</th> -->
+            <th>View profile and posts</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+
+        <% users.forEach(function(user){ %>
+        <tr>
+            <td><%=user._id%></td>    
+            <td><%=user.username%></td>
+            <td><%=user.mobile%></td>
+            <td><%=user.city%></td>
+            
+            <td>
+                    <a class="btn btn-success" href="/user/<%= user._id%>/chat ">CHAT</a>
+                      
+            </td>
+        </tr>
+        
+ <% }); %>
+    </tbody>
+</table>
+
+<%- include ("../partials/footer") %> 

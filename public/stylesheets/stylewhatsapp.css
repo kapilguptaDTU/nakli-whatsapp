@@ -1,0 +1,36 @@
+.c1{
+    /* width:30%; */
+    color: white;
+    background-color: #444753;
+}
+.c2{
+    width:100%
+}
+.f{
+    display:flex;
+     background-color:white;
+    margin-top:25px;width:90%;margin-left:5%;
+}
+
+.wra{
+    /* height: 90vh; */
+    /* overflow: scroll; */
+    height: 90vh;
+    overflow-y: scroll;
+    width: 100vw;
+    margin-bottom: 5vh;
+}
+.tac{
+    text-align:center;
+
+}
+
+.listwale{
+    text-align:center;
+color:white;
+}
+
+td a{
+    display: block;
+    width: 100%;
+}

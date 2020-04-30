@@ -1,0 +1,75 @@
+<%- include ("../partials/header") %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">DBMS APP</p>
+            
+            <a class="btn btn-success" href="/employee/<%= post.employees[0] %>">Go Back</a>
+
+            <div class="list-group">
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= post.image %>">
+                <div class="caption-full">
+                    <h4 class="pull-right">$<%=numReplies%>/night</h4>
+                    <h4><a><%=post.name%></a></h4>
+                    <p><%= post._id %></p>
+                    
+                    <p><%= post.description %></p>
+                    <a class="btn btn-success" href="/post/<%= post._id %>/update">Update Post</a>
+                    <a class="btn btn-danger" href="/post/delete/<%= post._id %>">Delete Post</a>
+                    <a class="btn btn-success" href="/posts">See all posts</a>
+                                            
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/post/<%= post._id %>/comment/new">Add New Comment!</a>
+                </div>
+                <hr>
+                <% post.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= comment.author %></strong>
+                            <span class="pull-right">10 days ago</span>
+                            <p>
+                                <%= comment.text%> 
+                                <p><%= comment._id%> </p> 
+                            </p>
+                            <a class="btn btn-secondary" href="/comment/<%= comment._id %>/reply">Reply on this Comment</a>
+                       <br>   
+                       <hr>                         
+                    <a class="btn btn-success" href="/comment/<%= comment._id %>/update">Update Comment</a>
+                    <br>   
+                    <hr><a class="btn btn-danger" href="/comment/delete/<%= comment._id %>">Delete Comment</a>
+                    <br>   
+                    <hr><a class="btn btn-danger" href="/comment/<%= comment._id %>">Show all replies on this comment</a>
+                       
+                    <hr>
+                       
+                       <br>   
+                       <hr>
+                       <% replies.forEach(function(reply){ %>
+                        <strong><%= reply.author %></strong>
+                        <span class="pull-right">1 day agoo</span>
+                        <p>
+                                <%= reply%>
+                            <%= reply.text%>  
+                        </p>
+                        <a class="btn btn-secondary" href="/comment/<%= reply._id %>/reply">Reply on this Reply</a>
+                   <br>   
+                   <hr>     
+                        <% }) %>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ("../partials/footer") %>

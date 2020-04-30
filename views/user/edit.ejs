@@ -1,0 +1,24 @@
+<%- include ("../partials/header") %> 
+<h3>EDIT <%=post.name%></h3>
+
+<form action="/post/<%=post._id%>" method="POST" autocomplete="off" >
+    <div class="form-group">
+        <label >Name</label>
+        <input type="text" class="form-control" name="post[name]" placeholder="Author" value="<%=post.name%>">
+    </div>
+    <div class="form-group">
+        <label >Image</label>
+        <input type="text" class="form-control" name="post[image]" placeholder="Text" value="<%=post.image%>">
+    </div>
+    <div class="form-group">
+        <label >Description</label>
+        <input type="text" class="form-control" name="post[description]" placeholder="Text" value="<%=post.description%>">
+    </div>
+<div class="form-group">
+    <button type="submit" class="btn btn-info">Submit</button>
+<a class="btn btn-secondary"href="/employee/list"><i class="fa fa-list-alt"></i>View All employees</a>
+</div>
+</form>
+ 
+
+<%- include ("../partials/footer") %> 
