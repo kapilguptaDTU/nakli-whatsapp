@@ -169,7 +169,7 @@ router.get("/comment/:id", function (req, res) {
             console.log(err);
         } else {
             res.render("comment/show", {
-                parentComment: parentComment
+                replies: parentComment
             });
         }
     });

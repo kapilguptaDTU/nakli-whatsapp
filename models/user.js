@@ -18,6 +18,19 @@ var UserSchema = new mongoose.Schema({
     state:{
         type:String
     } ,
+    profileImage:{
+        type:String,
+        default:"https://cdn.drawception.com/images/panels/2016/12-23/LzmGdeampF-4.png"
+    } ,
+    
+
+    description:{
+        type:String,
+        default:"I love this app!!"
+    
+    },
+
+
     highscore:{
         type:String,
         default:'0'
@@ -28,6 +41,10 @@ var UserSchema = new mongoose.Schema({
              ref: "Post"
           }
        ],
+       numPosts:{
+        type:Number,
+        default:0
+    } ,
        
        comments: [
         {

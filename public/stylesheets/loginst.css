@@ -1,0 +1,23 @@
+
+body{
+    /* background-color: black; */
+    background: url('./loginback.jpg');
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+
+.back-wrapper{
+    background: -webkit-linear-gradient(bottom, #005bea, #00c6fbc7);
+    height:100vh;
+    width:100vw;  
+}
+.main
+{
+    display: flex;
+}
+
+h1{
+    margin:auto;
+}

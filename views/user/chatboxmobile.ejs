@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V12</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
+
+	<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/stylesheets/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+<!--===============================================================================================-->
+<!--	<link rel="stylesheet" type="text/css" href="./fonts/font-awesome-4.7.0/css/font-awesome.min.css">-->
+<!-- =============================================================================================== -->
+<!--	<link rel="stylesheet" type="text/css" href="./fonts/Linearicons-Free-v1.0.0/icon-font.min.css">-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="/stylesheets/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/stylesheets/util.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/main2.css">
+<!--===============================================================================================-->
+<style>
+	.login100-form-avatar img {
+    width: 100%;
+    height: -webkit-fill-available;
+}
+.a img {
+    width: 100%;
+    /* height: -webkit-fill-available; */
+}
+
+#navbar {
+  overflow: hidden;    background-color: #3333334d;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: transparent;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+    position: fixed;
+    /* top: 0; */
+    width: 60%;
+    bottom: 5vh;
+    z-index: 100;
+    
+    }
+
+.sticky + .content {
+  padding-top: 60px;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #001d4a; 
+}
+</style>
+</head>
+<body style="color:white;">
+
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<a class="navbar-brand" href="#">NAKLI WHATSAPP</a>
+	  
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+		  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item active">
+			  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="/user/<%=currentUser._id%>">View Your Profile<span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+                <a class="nav-link" href="/posts">View All Posts<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Go Back<span class="sr-only">(current)</span></a>
+              </li>
+		  </ul>
+          <span class="navbar-text">
+            <a class="nav-link" href="/login" style="display:inline-block;">LOGIN<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/register"style="display:inline-block;">SIGN UP<span class="sr-only">(current)</span></a>
+
+        </span>
+		</div>
+	  </nav>	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('/stylesheets/img-01.jpg');">
+			<div class="wrap-login100  p-b-30">
+				<form action="#" class="login100-form validate-form">
+					<div class="login100-form-avatar a">
+						<img src="/stylesheets/happybean.jpg" alt="AVATAR" style="height:auto;">
+					</div>
+
+					<span class="login100-form-title p-t-20 p-b-45" style="font-family: 'Montserrat Alternates', sans-serif;">
+						LIST OF AVAILABLE USERS!
+					</span>
+
+                    <% allUsers.forEach(function(alluser){ %>
+                        <!-- <a class="listwale" href="/user/<%= alluser._id%>/chat ">
+                               <%=alluser.username%>
+                           </a> -->
+                           <div class="container-login100-form-btn p-t-10" style="font-family: 'Montserrat Alternates', sans-serif;">
+                                   <a href="/user/<%= alluser._id%>/chat"class="login100-form-btn"style="font-family: 'Montserrat Alternates', sans-serif;" >
+                                           <%=alluser.username%>
+                                   </a>
+                               </div>
+                      
+
+                   <% }); %>
+               <div class="text-center w-full p-t-25 p-b-230">
+                   <a href="/login" class="txt1" style="font-family: 'Montserrat Alternates', sans-serif;">
+                       Go to DBMS App to post something great!   <i class="fa fa-long-arrow-right"></i>	
+                   </a>
+               </div>
+
+
+
+				</form>
+            </div>
+
+
+            <div class="chattter wrap-chatlogin100  p-b-30" id="scroller"  >
+        			<div class="login100-form-avatar a">
+						<img src="/stylesheets/happybean.jpg" alt="AVATAR" style="height:auto;">
+					</div>
+
+					<span class="login100-form-title p-t-20 p-b-45" style="font-family: 'Montserrat Alternates', sans-serif;">
+						<%=currentUser.username%> CHATTING WITH
+                        <%=user.username%>
+					</span>
+                    <div id="navbar" class="sticky">
+                        
+                        <form action="/user/<%=user._id%>/chat" method="POST" autocomplete="off"style="    width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            margin-bottom: 0;">
+                            <div class="form-group" style="display:inline-block;width:70%;border-radius:25px;margin-bottom:0;">
+                                
+                                <input type="text" class="form-control" name="c[chat]" placeholder="Message...">
+                            </div>
+                            <div class="form-group" style="display:inline-block;margin-bottom:0;">
+                                <button type="submit" class="btn btn-dark " >SEND</button>
+                                <!-- <a class="btn btn-secondary" href="/user/<%=user._id%>">
+                                    <i class="fa fa-list-alt"></i>Go back</a> -->
+                            </div>
+                        </form>
+            
+                    </div>
+                        <% for (var j =0; j <i;  j++ ) { %>
+                                <% if(seq[j]=='sent'){ %>
+                                    <div style="width:100%">
+                                    <div class="container-login100-form-btn p-t-10" style="font-family: 'Montserrat Alternates', sans-serif; float:right;">
+                                            <a class="login100-form-btn"style="font-family: 'Montserrat Alternates', sans-serif;background: -webkit-linear-gradient(left, #001d4a, #00c6fb);" >
+                                          <%=currentUser.username%>:
+                                                <br>
+                                                <%=messagesy[j]%>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <% } else { %>
+                                        <div style="width:100%">
+                                        <div class="container-login100-form-btn p-t-10" style="font-family: 'Montserrat Alternates', sans-serif;float:left;">
+                                                <a class="login100-form-btn"style="font-family: 'Montserrat Alternates', sans-serif;    background: -webkit-linear-gradient(left, #141d27, #fb0ad9);" >
+                                            <%=user.username%>:<br>
+                                                    <%=messagesy[j]%>
+                                                </a>
+                                        </div>
+                                    </div>
+                                        <% } %>
+            
+            
+                                            <% } %>
+            
+
+
+
+
+                        <div class="text-center w-full p-t-25 p-b-230">
+						<a href="/login" class="txt1" style="font-family: 'Montserrat Alternates', sans-serif;">
+							Go to DBMS App to post something great!   <i class="fa fa-long-arrow-right"></i>	
+						</a>
+					</div>
+<!-- 
+					<div class="text-center w-full">
+						<a class="txt1" href="/login" style="font-family: 'Montserrat Alternates', sans-serif;">
+							Login to continue if not!
+							<i class="fa fa-long-arrow-right"></i>						
+						</a>
+                    </div> -->
+                   
+				
+
+
+
+            </div>
+
+
+
+
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="/js/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/js/popper.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/js/select2.min.js"></script>
+<!--===============================================================================================-->
+    <script src="/js/main.js"></script>
+    <!-- ===================================== -->
+     
+
+</body>
+</html>

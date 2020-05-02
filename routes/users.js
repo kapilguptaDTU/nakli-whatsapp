@@ -10,7 +10,7 @@ var Comment = require("../models/comment");
 
 
 
-router.get('/users', (req, res) => {
+router.get('/users', isLoggedIn, (req, res) => {
     // res.json('from list');
     User.find({}, (err, docs) => {
         if (!err) {
@@ -26,7 +26,7 @@ router.get('/users', (req, res) => {
         }
     }).lean();
 });
-router.get('/', (req, res) => {
+router.get('/',isLoggedIn, (req, res) => {
     // res.json('from list');
     User.find({}, (err, docs) => {
         if (!err) {
@@ -230,7 +230,7 @@ router.get("/user/:id/chat", isLoggedIn, function (req, res) {
                 // console.log(os + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                 var seq = osa.split(",");
                 var i = messagess.length;
-                res.render("user/chatbox", {
+                res.render("user/chatboxmobile", {
                     user: reciever,
                     messagesy: messagess,
                     seq: seq,
@@ -256,7 +256,7 @@ router.get("/user/:id", isLoggedIn, function (req, res) {
         //     foundUser.messages['ron']='hermoine';
         //  console.log( foundUser.messages['ron']);
         //  console.log(foundUser);
-        foundUser.save();
+        // foundUser.save();
         //  ['ron']='hermoine';
         var flag = 0;
         if (err) {
@@ -267,8 +267,9 @@ router.get("/user/:id", isLoggedIn, function (req, res) {
                     flag = 1;
                 }
             });
-            res.render("user/show2", {
+            res.render("user/profilepage", {
                 user: foundUser,
+                allUsers:globalUsers,
                 flag: flag
             });
         }
@@ -308,7 +309,7 @@ router.get("/user/:id/friend", function (req, res) {
 
 
 router.get("/register", function (req, res) {
-    res.render("register");
+    res.render("user/register");
 });
 //handle sign up logic
 router.post("/register", function (req, res) {
@@ -318,7 +319,8 @@ router.post("/register", function (req, res) {
         state: req.body.state,
         city: req.body.city,
         highscore: '0',
-
+        profileImage:req.body.profileImage,
+        description:req.body.description
 
     });
     User.register(newUser, req.body.password, function (err, user) {
@@ -327,18 +329,18 @@ router.post("/register", function (req, res) {
             return res.render("register");
         }
         passport.authenticate("local")(req, res, function () {
-            res.redirect("/users");
+            res.redirect("/");
         });
     });
 });
 
 // show login form
 router.get("/login", function (req, res) {
-    res.render("login");
+    res.render("user/login");
 });
 // handling login logic
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/users",
+    successRedirect: "/",
     failureRedirect: "/login"
 }), function (req, res) {});
 
@@ -346,7 +348,7 @@ router.post("/login", passport.authenticate("local", {
 router.get("/logout", function (req, res) {
     req.logout();
     console.log("succesfuly logged out");
-    res.redirect("/users");
+    res.redirect("/");
 });
 
 function isLoggedIn(req, res, next) {

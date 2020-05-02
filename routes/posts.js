@@ -21,7 +21,7 @@ router.get('/posts', (req, res) => {
     // res.json('from list');
     Post.find({}, (err, docs) => {
         if (!err) {
-            res.render("post/list", {
+            res.render("post/allposts", {
                 posts: docs
             });
         } else {
@@ -106,7 +106,7 @@ router.get("/post/:id", function (req, res) {
             });
 
             function a() {
-                res.render("post/show2", {
+                res.render("post/show3", {
                     post: foundPost,
                     replies: allComments,
                     numReplies: numReplies

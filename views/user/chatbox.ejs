@@ -42,8 +42,8 @@
             </nav>
             <form action="/user/<%=user._id%>/chat" method="POST" autocomplete="off">
                 <div class="form-group">
-                    <label>Type message</label>
-                    <input type="text" class="form-control" name="c[chat]" placeholder="Message...">
+                   
+                    <input type="text" class="form-control" name="c[chat]" placeholder="Message..." style="border-radius:25px;">
                 </div>
                 <div class="form-group con-center" style="margin-left:90% ;">
                     <button type="submit" class="btn btn-dark " >SEND</button>
@@ -86,3 +86,4 @@
 </div>
 </div>
         <%- include ("../partials/footer") %>
+    

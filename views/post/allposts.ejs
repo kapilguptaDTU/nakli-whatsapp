@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/allpoststyle.css">
+</head>
+<body style="font-family: 'Montserrat Alternates', sans-serif;">
+
+  <div class="container">
+<div class="wrapper">
+  
+  <% posts.forEach(function(post){ %>
+
+  
+  <div class="blog-item">
+    <div class="blog-image">
+      <img src="https://images.pexels.com/photos/1134166/pexels-photo-1134166.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+    </div>
+    <div class="blog-content">
+      <h1 class="blog-title"><%=post.name%></h1>
+      <span class="blog-date"><%=post.author%></span>
+      <p class="blog-caption"><%=post.description%></p>
+      <a class="btn btn-red"  href="/post/<%= post._id %>">Read More</a>
+    </div>
+  </div>
+  
+<% }); %>
+  
+  
+  
+  
+  
+  
+  <div class="blog-item">
+    <div class="blog-image">
+      <img src="https://images.pexels.com/photos/2425251/pexels-photo-2425251.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+    </div>
+    <div class="blog-content">
+      <h1 class="blog-title">Akihabara</h1>
+      <span class="blog-date">February 5, 2020</span>
+      <p class="blog-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque volutpat nibh nec
+        tempor congue. Nunc eu tempor enim. Nam dapibus a augue quis dignissim.</p>
+      <button class="btn btn-red">Read More</button>
+    </div>
+  </div>
+    <div class="blog-item">
+    <div class="blog-image">
+      <img src="https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+    </div>
+    <div class="blog-content">
+      <h1 class="blog-title">Mt. Fuji</h1>
+      <span class="blog-date">February 5, 2020</span>
+      <p class="blog-caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque volutpat nibh nec
+        tempor congue. Nunc eu tempor enim. Nam dapibus a augue quis dignissim.</p>
+      <button class="btn btn-red">Read More</button>
+    </div>
+  </div>
+
+
+</div>
+</div>
+  
+</body>
+</html>

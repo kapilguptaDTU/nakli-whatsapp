@@ -1,68 +1,66 @@
-<%- include ("../partials/header") %>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/postshow3.css">
+</head>
+<body style="font-family: 'Montserrat Alternates', sans-serif;">
 <div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <p class="lead">DBMS APP</p>
-            
-            <a class="btn btn-success" href="/post/<%= parentComment.posts[0] %>">Go Back</a>
+<div class="wrapper" style="    justify-content: center;">
+    
 
-            <div class="list-group">
-                <li class="list-group-item active">Info 1</li>
-                <li class="list-group-item">Info 2</li>
-                <li class="list-group-item">Info 3</li>
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="thumbnail">
-                <div class="caption-full">
-                    <h4><a><%=parentComment.author%></a></h4>
-                    <p><%= parentComment.text %></p>
-                    <a class="btn btn-success" href="/comment/<%= parentComment._id %>/update">Update Comment</a>
-                    <a class="btn btn-danger" href="/comment/delete/<%= parentComment._id %>">Delete Comment</a>
-                    <a class="btn btn-success" href="/posts">See all posts</a>
-                                            
-                </div>
-            </div>
-            <div class="well">
+      <div class="blog-item" style="flex: 0 0 88%;max-width: -webkit-fill-available;
+      word-break: break-word;">
+        <div class="blog-content">
+            <h4><a><%=replies.author%></a></h4>
+            <p><%= replies.text %></p>
+            <a class="btn btn-red" href="/comment/<%= replies._id %>/update">Update Comment</a>
+            <a class="btn btn-dark" href="/comment/delete/<%= replies._id %>">Delete Comment</a>
+            <a class="btn btn-primary" href="/post/<%=replies.posts[0]%>">GO TO POST</a>
+                                    
+            <br>   
+            <hr>     
+            <br>   
+            <hr>     
+            <br>   
+            <hr>     
+   
+              
+               <div class="replyofcomment" style="padding-left:100px;">
+               <% replies.childComments.forEach(function(replyoncomment){ %>
+                <strong><%= replyoncomment.author %></strong>
+                <span class="pull-right">1 day agoo</span>
+                <p>
+                    <%= replyoncomment.text%>  
+                </p>
                 <div class="text-right">
-                    <a class="btn btn-success" href="/comment/<%= parentComment._id %>/reply">Add New Reply on this comment!</a>
-                </div>
-                <hr>
-                <% parentComment.childComments.forEach(function(childComment){ %>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <strong><%= childComment.author %></strong>
-                            <span class="pull-right">10 days ago</span>
-                            <p>
-                                <%= childComment.text%>  
-                            </p>
-                            <a class="btn btn-secondary" href="/comment/<%= childComment._id %>/reply">Reply on this reply</a>
-                       <br>                            
-                       <a class="btn btn-success" href="/comment/<%= childComment._id %>/update">Update this reply</a>
-                       <a class="btn btn-danger" href="/comment/delete/<%=childComment._id %>">Delete this reply</a>
-                       
-                       <a class="btn btn-success" href="/comment/<%= childComment._id %>">Show all replies to this reply</a>
-                    
-                       <% childComment.childComments.forEach(function(childofchild){ %>
-                             <div>
-                                 <p>
-                                    <strong><%= childofchild.author %></strong>
-                                    <span class="pull-right">1000000 days ago</span>
-                                    <p>
-                                        <%= childofchild%>  
-                                        <%= childofchild.text%>  
-                                        
-                                    </p>     
-                                 </p>
-                             </div>
-
-                        <% }) %>        
-                
-                        </div>
-                    </div>
+                <a class="btn btn-dark" href="/comment/<%= replyoncomment._id %>/reply">Reply</a>
+            </div>
+                <br>   
+           <hr>     
                 <% }) %>
+                <hr><hr>
+            </div>
+                </div>
             </div>
         </div>
+      </div>
+    
+      
     </div>
-</div>
-<%- include ("../partials/footer") %>
+    </div>
+      
+    </body>
+    </html>
+    
