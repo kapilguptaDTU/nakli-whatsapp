@@ -2,13 +2,61 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title><%=user.username%></title>
+  <title>PROFILE PAGE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel="stylesheet" href="/stylesheets/profilepagestyle.css">
 <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body style="bottom:0;padding-bottom:0;font-family: 'Montserrat Alternates', sans-serif;">
+
+
+
+		<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" href="#">NAKLI WHATSAPP</a>
+			  
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+				  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active">
+					  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+					<% if(!currentUser){%>
+						<a class="nav-link" href="/login" style="display:inline-block;">PLEASE LOGIN!!<span class="sr-only">(current)</span></a>
+						<%}else{%>
+							<a class="nav-link" href="/user/<%=currentUser._id%>">View Your Profile<span class="sr-only">(current)</span></a>
+						<%}%>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/posts">View All Posts<span class="sr-only">(current)</span></a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="/">Go Back<span class="sr-only">(current)</span></a>
+					  </li>
+				  </ul>
+				  <span class="navbar-text">
+					<% if(!currentUser){%>
+						<a class="nav-link" href="/login" style="display:inline-block;">LOGIN<span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="/register"style="display:inline-block;">SIGN UP<span class="sr-only">(current)</span></a>
+					<%}else{%>
+						<a class="nav-link" href="/logout" style="display:inline-block;">SIGN OUT<span class="sr-only">(current)</span></a>
+						<%}%>
+					
+				</span>
+				</div>
+			  </nav>	
+			
+
+
+
+
+
+
 	<div class="limiter">
 	<!-- partial:index.partial.html -->
 <header>
@@ -24,7 +72,8 @@
 			</div>
 
 			<div class="profile-user-settings" style="    display: flex;
-			align-items: center;">
+			align-items: center;
+			overflow-wrap: anywhere;">
 
 				<h1 class="profile-user-name" style="text-transform: uppercase;margin-right: 1rem;
 				width: -webkit-fill-available;
@@ -294,9 +343,18 @@
 
 </main>
 <!-- partial -->
-  <script  src="/js/profilepagescript.js"></script>
-  <script src="/js/popper.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-</div>
-</body>
-</html>
+  	</div>
+<!--===============================================================================================-->	
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	<!--===============================================================================================-->
+		<script src="/js/popper.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+	<!--===============================================================================================-->
+		<script src="/js/select2.min.js"></script>
+	<!--===============================================================================================-->
+		<script src="/js/main.js"></script>
+		<!-- ===================================== -->
+		 
+	
+	</body>
+	</html>

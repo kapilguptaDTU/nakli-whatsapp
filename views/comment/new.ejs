@@ -38,6 +38,43 @@
 
 <body>
 
+	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<a class="navbar-brand" href="#">NAKLI WHATSAPP</a>
+	  
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+		  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item active">
+			  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+			<% if(!currentUser){%>
+				<a class="nav-link" href="/login" style="display:inline-block;">PLEASE LOGIN!!<span class="sr-only">(current)</span></a>
+				<%}else{%>
+					<a class="nav-link" href="/user/<%=currentUser._id%>">View Your Profile<span class="sr-only">(current)</span></a>
+				<%}%>
+			</li>
+			<li class="nav-item">
+                <a class="nav-link" href="/posts">View All Posts<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Go Back<span class="sr-only">(current)</span></a>
+              </li>
+		  </ul>
+          <span class="navbar-text">
+            <% if(!currentUser){%>
+				<a class="nav-link" href="/login" style="display:inline-block;">LOGIN<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/register"style="display:inline-block;">SIGN UP<span class="sr-only">(current)</span></a>
+			<%}else{%>
+				<a class="nav-link" href="/logout" style="display:inline-block;">SIGN OUT<span class="sr-only">(current)</span></a>
+				<%}%>
+			
+        </span>
+		</div>
+	  </nav>	
+	
     <div class="limiter">
         <div class="container-login100" style="background-image: url('/stylesheets/img-01.jpg');">
             <div class="wrap-login100 p-t-190 p-b-30">

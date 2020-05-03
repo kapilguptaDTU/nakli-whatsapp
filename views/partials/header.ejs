@@ -1,61 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DBMS mongoDB express</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="/stylesheets/stylewhatsapp.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
-        crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        .thumbnail img {
-            width: 100%;
-        }
+  <meta charset="UTF-8">
+  <title>NAKLI WHATSAPP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="/stylesheets/profilepagestyle.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
 
-        .thumbnail {
-            padding: 0;
-        }
-
-        .thumbnail .caption-full {
-            padding: 9px;
-        }
-    </style>
 </head>
+<body style="bottom:0;padding-bottom:0;font-family: 'Montserrat Alternates', sans-serif;">
 
-<body class="bg-info">
 
-    <nav class="navbar navbar-default" style="background-color:antiquewhite">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/posts">DBMS APP</a>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-                <% if(!currentUser){ %>
-                    <li>
-                        <a href="/login">Login</a>
-                    </li>
-                    <li>
-                        <a href="/register">Sign Up</a>
-                    </li>
-                    <% } else { %>
-                        <li>
-                            <a href="#">Signed In As
-                                <%= currentUser.username %>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/logout">Logout</a>
-                        </li>
-                        <% } %>
-            </ul>
 
-        </div>
-    </nav>
-
-    <div class="row">
-        <div class="col-md-6 offset-md-3" style="background-color:white;margin-top:25px;padding:20px;">
+		<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand" href="#">NAKLI WHATSAPP</a>
+			  
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+				  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<li class="nav-item active">
+					  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+					<% if(!currentUser){%>
+						<a class="nav-link" href="/login" style="display:inline-block;">PLEASE LOGIN!!<span class="sr-only">(current)</span></a>
+						<%}else{%>
+							<a class="nav-link" href="/user/<%=currentUser._id%>">View Your Profile<span class="sr-only">(current)</span></a>
+						<%}%>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/posts">View All Posts<span class="sr-only">(current)</span></a>
+					  </li>
+					  <li class="nav-item">
+						<a class="nav-link" href="/">Go Back<span class="sr-only">(current)</span></a>
+					  </li>
+				  </ul>
+				  <span class="navbar-text">
+					<% if(!currentUser){%>
+						<a class="nav-link" href="/login" style="display:inline-block;">LOGIN<span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="/register"style="display:inline-block;">SIGN UP<span class="sr-only">(current)</span></a>
+					<%}else{%>
+						<a class="nav-link" href="/logout" style="display:inline-block;">SIGN OUT<span class="sr-only">(current)</span></a>
+						<%}%>
+					
+				</span>
+				</div>
+			  </nav>	
