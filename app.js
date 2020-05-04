@@ -29,21 +29,29 @@ var commentRoutes = require("./routes/comments"),
     employeeRoutes = require("./routes/employees")
     userRoutes = require("./routes/users")
     
-
-
-
-mongoose.connect('mongodb://localhost:27017/MongoApp_V6', {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-}, (err) => {
-    if (!err) {
-        console.log('MongoDB connection successful')
-    } else {
-        console.log('Error in DB connection' + err)
-    }
-
-
+mongoose.connect('mongodb+srv://kapil:Kapildev@1@cluster0-3p0rc.mongodb.net/test', {
+	useNewUrlParser: true,
+	useCreateIndex: true,
+	useUnifiedTopology: true
+}).then(() => {
+	console.log('Connected to DB!');
+}).catch(err => {
+	console.log('ERROR:', err.message);
 });
+
+// mongodb+srv://kapil:<password>@cluster0-3p0rc.mongodb.net/test
+// mongoose.connect('mongodb://localhost:27017/MongoApp_V6', {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true
+// }, (err) => {
+//     if (!err) {
+//         console.log('MongoDB connection successful')
+//     } else {
+//         console.log('Error in DB connection' + err)
+//     }
+
+
+// });
 
 mongoose.set('useFindAndModify', false);
 app.set('view engine', 'ejs');
@@ -78,7 +86,11 @@ app.use("/", userRoutes);
 
 // LISTENING AT 3000 //
 
-app.listen(3000, () => {
-    console.log('Express server started at port 3000');
+// app.listen(3000, () => {
+//     console.log('Express server started at port 3000');
 
-});
+// });
+
+
+app.listen(process.env.PORT,process.env.IP);
+console.log("DBMS V8 started");
