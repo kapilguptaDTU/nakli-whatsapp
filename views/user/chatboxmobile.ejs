@@ -25,6 +25,12 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/util.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/main2.css">
 <!--===============================================================================================-->
+<script>
+    const roomName = "hello room"
+  </script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="/js/socketchatscript.js"></script>
+
 <style>
 	.login100-form-avatar img {
     width: 100%;
@@ -185,8 +191,8 @@
 					</div>
 
 					<span class="login100-form-title p-t-20 p-b-45" style="font-family: 'Montserrat Alternates', sans-serif;">
-						<%=currentUser.username%> CHATTING WITH
-                        <%=user.username%>
+						<%=currentUser.username%><%=currentUser._id%> CHATTING WITH
+                        <%=user.username%><%=user._id%>
 					</span>
                     <div id="navbar" class="sticky">
                         
@@ -212,7 +218,7 @@
                                     <div class="container-login100-form-btn p-t-10" style="font-family: 'Montserrat Alternates', sans-serif; float:right;">
                                             <a class="login100-form-btn"style="font-family: 'Montserrat Alternates', sans-serif;background: -webkit-linear-gradient(left, #001d4a, #00c6fb);" >
                                           <%=currentUser.username%>:
-                                                <br>
+                                                
                                                 <%=messagesy[j]%>
                                             </a>
                                         </div>
@@ -221,7 +227,7 @@
                                         <div style="width:100%">
                                         <div class="container-login100-form-btn p-t-10" style="font-family: 'Montserrat Alternates', sans-serif;float:left;">
                                                 <a class="login100-form-btn"style="font-family: 'Montserrat Alternates', sans-serif;    background: -webkit-linear-gradient(left, #141d27, #fb0ad9);" >
-                                            <%=user.username%>:<br>
+                                            <%=user.username%>:
                                                     <%=messagesy[j]%>
                                                 </a>
                                         </div>
@@ -230,7 +236,17 @@
             
             
                                             <% } %>
-            
+                                            <div style="width:100%">
+                                                <div class="container-login100-form-btn p-t-10" style="font-family: 'Montserrat Alternates', sans-serif; float:right;">
+                                                        <a class="login100-form-btn"style="font-family: 'Montserrat Alternates', sans-serif;background: -webkit-linear-gradient(left, #001d4a, #00c6fb);" >
+                                                      <%=currentUser.username%>:
+                                                            <br>
+                                                            arre waah cooooollllll
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                
+
 
 
 
