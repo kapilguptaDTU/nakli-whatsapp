@@ -73,7 +73,7 @@ global.globalUsers=docs;
 });
 
 
-app.post("/user/:id/chat", function (req, res) {
+app.post("/user/:id/chat",isLoggedIn, function (req, res) {
 
     // User.findById(req.params.id).populate("posts").exec(function (err, reciever) {
     //     var flag = 0;
@@ -177,7 +177,7 @@ app.post("/user/:id/chat", function (req, res) {
 
 });
 
-app.get("/user/:id/chat", function (req, res) {
+app.get("/user/:id/chat",isLoggedIn, function (req, res) {
     //find the campground with provided ID
 
 
@@ -447,3 +447,10 @@ console.log("chuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
   }
 
 
+
+  function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/login");
+}
