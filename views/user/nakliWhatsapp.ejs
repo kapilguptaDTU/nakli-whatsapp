@@ -96,6 +96,8 @@ ul li a{
 						<a class="nav-link" href="/login" style="display:inline-block;">LOGIN<span class="sr-only">(current)</span></a>
 								<a class="nav-link" href="/register"style="display:inline-block;">SIGN UP<span class="sr-only">(current)</span></a>
 					<%}else{%>
+						<a class="nav-link" href="#" style="display:inline-block;">LOGGED IN AS <%=currentUser.username%><span class="sr-only">(current)</span></a>
+						
 						<a class="nav-link" href="/logout" style="display:inline-block;">SIGN OUT<span class="sr-only">(current)</span></a>
 						<%}%>
 					
