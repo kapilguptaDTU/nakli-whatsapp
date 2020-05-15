@@ -210,6 +210,12 @@ socket.join('/user/'+rec+'/chat')
     // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaccccccccccccccccccccccccccccccccccccccccc/user/'+sen+'/chat');
     socket.to('/user/'+sen+'/chat').broadcast.emit('chat-message', { message: message, rec:rec,sen:sen})
 
+    User.findById(sen,function (err, sender) {
+   
+    console.log("currentwala changed from"+currentwala.username+"to"+sen.username);
+    currentwala=sen;   
+})
+
     User.findById(rec,function (err, reciever) {
    
         var flag = 0;
@@ -304,6 +310,7 @@ socket.join('/user/'+rec+'/chat')
             objstring = findObjectByKey(sender.sequence, 'n', recieverName);
 console.log(senderName)
 console.log(recieverName)
+
             function a() {
                 sender.save();
                 reciever.save();
