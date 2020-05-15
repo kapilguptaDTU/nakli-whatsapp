@@ -47,7 +47,9 @@ if (messageForm != null) {
     // appender(`You: ${message}`)
     mainappender(message,'sender');
     // console.log(reccomp);
-    console.log("main currentwalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+currentwala);
+    console.log("main senderaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+sen);
+    console.log("main recieveraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+rec);
+
     socket.emit('send-chat-message', rec, sen, message)
     messageInput.value = ''
   })
@@ -75,6 +77,12 @@ socket.on('room-created', room => {
 socket.on('chat-message', data => {
   // appender(`${data.sen}: ${data.message}`)
   mainappender(data.message,'reciever')
+})
+socket.on('chat-message-wale', data => {
+  // appender(`${data.sen}: ${data.message}`)
+  console.log("reciever"+data.recieverName);
+  console.log("sender"+data.senderName);
+  
 })
 
 socket.on('user-connected', name => {

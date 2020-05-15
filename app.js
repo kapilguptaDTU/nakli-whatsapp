@@ -221,6 +221,9 @@ socket.join('/user/'+rec+'/chat')
             var senderName = currentwala.username;
 
             var recieverName = reciever.username;
+            socket.to('/user/'+sen+'/chat').broadcast.emit('chat-message-wale', { recieverName:recieverName,senderName:senderName})
+            socket.to('/user/'+rec+'/chat').broadcast.emit('chat-message-wale', { recieverName:recieverName,senderName:senderName})
+
             // reciever=rec;
             console.log(message + "aaaa"+senderName+" "+recieverName);
 
@@ -299,7 +302,8 @@ socket.join('/user/'+rec+'/chat')
 
             obj = findObjectByKey(sender.messages, 'n', recieverName);
             objstring = findObjectByKey(sender.sequence, 'n', recieverName);
-
+console.log(senderName)
+console.log(recieverName)
             function a() {
                 sender.save();
                 reciever.save();
