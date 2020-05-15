@@ -83,7 +83,7 @@ socket.on('user-connected', name => {
 socket.on('user-disconnected', name => {
   // appender(`${name} disconnected`)
 const width100 = document.getElementById('width100')
-status.innerText='ofline';
+if(status)status.innerText='ofline';
 
 
 })

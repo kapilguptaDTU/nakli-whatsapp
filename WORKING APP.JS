@@ -62,9 +62,6 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function (req, res, next) {
     res.locals.currentUser = req.user;
-    
-    global.currentwala=req.user;
-
     next();
 });
 
@@ -76,13 +73,115 @@ global.globalUsers=docs;
 });
 
 
+app.post("/user/:id/chat",isLoggedIn, function (req, res) {
+
+    // User.findById(req.params.id).populate("posts").exec(function (err, reciever) {
+    //     var flag = 0;
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         var sender = req.user;
+
+    //         var senderName = req.user.username;
+
+    //         var recieverName = reciever.username;
+    //         console.log(req.body.c.chat + "aaaa");
+
+    //         function findObjectByKey(array, key, value) {
+    //             for (var j = 0; j < array.length; j++) {
+    //                 if (array[j][key] === value) {
+    //                     return array[j];
+    //                 }
+    //             }
+    //             return null;
+    //         }
+
+    //         var obj = findObjectByKey(sender.messages, 'n', recieverName);
+
+    //         if (obj == null) {
+    //             sender.messages.push({
+    //                 n: recieverName,
+    //                 v: ''
+    //             });
+    //             reciever.messages.push({
+    //                 n: senderName,
+    //                 v: ''
+    //             });
+
+    //             sender.sequence.push({
+    //                 n: recieverName,
+    //                 v: ''
+    //             });
+    //             reciever.sequence.push({
+    //                 n: senderName,
+    //                 v: ''
+    //             });
+    //         }
+
+    //         obj = findObjectByKey(sender.messages, 'n', recieverName);
+    //         var obj2 = findObjectByKey(reciever.messages, 'n', senderName);
+    //         var objstring = findObjectByKey(sender.sequence, 'n', recieverName);
+    //         var objstring2 = findObjectByKey(reciever.sequence, 'n', senderName);
+
+    //         obj.v = obj.v + ',' + req.body.c.chat;
+
+    //         obj2.v = obj2.v + ',' + req.body.c.chat;
+
+
+    //         objstring.v = objstring.v + ',sent';
+
+    //         objstring2.v = objstring2.v + ',recieved';
+
+    //         function findObjectIdByKey(array, key, value) {
+    //             for (var j = 0; j < array.length; j++) {
+    //                 if (array[j][key] === value) {
+    //                     return j;
+    //                 }
+    //             }
+    //             return -1;
+    //         }
+    //         var index = findObjectIdByKey(sender.messages, 'n', recieverName);
+    //         if (index != -1) {
+    //             sender.messages[index].v = obj.v;
+    //         }
+
+    //         var index2 = findObjectIdByKey(reciever.messages, 'n', senderName);
+    //         if (index2 != -1) {
+    //             reciever.messages[index2].v = obj2.v;
+    //         }
+
+    //         var index3 = findObjectIdByKey(sender.sequence, 'n', recieverName);
+    //         if (index3 != -1) {
+    //             sender.sequence[index].v = objstring.v;
+    //         }
+
+    //         var index4 = findObjectIdByKey(reciever.sequence, 'n', senderName);
+    //         if (index4 != -1) {
+    //             reciever.sequence[index4].v = objstring2.v;
+    //         }
+
+    //         obj = findObjectByKey(sender.messages, 'n', recieverName);
+    //         objstring = findObjectByKey(sender.sequence, 'n', recieverName);
+
+    //         function a() {
+    //             sender.save();
+    //             reciever.save();
+    //             res.redirect("/user/" + reciever._id + "/chat")
+    //             io.emit('room-created');
+
+    //         };
+    //         setTimeout(a, 1000);
+    //     }
+    // });
+
+
+});
+
 app.get("/user/:id/chat",isLoggedIn, function (req, res) {
     //find the campground with provided ID
 
 
-
-
-
+    global.currentwala=req.user;
     // console.log(globalUsers);
     User.findById(req.params.id).populate("posts").exec(function (err, reciever) {
         var flag = 0;
@@ -172,7 +271,7 @@ app.use("/", userRoutes);
 // server.listen(3000, () => {
 //     console.log('Express server started at port 3000');
 
-// }); 
+// });
 
 server.listen(process.env.PORT,process.env.IP);
 console.log("DBMS V8 started");
@@ -204,14 +303,32 @@ socket.join('/user/'+rec+'/chat')
     socket.to('/user/'+sen+'/chat').broadcast.emit('reciever-joined-message')
 })
 
-     socket.on('send-chat-message', (rec,sen, message) => {
+    // socket.on('new-user', (room, name) => {
+    //   socket.join(room) 
+    //   rooms[room].users[socket.id] = name
+    //   socket.to(room).broadcast.emit('user-connected', name)
+    // })
+    socket.on('send-chat-message', (rec,sen, message) => {
+    //   socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
+    // User.findById(sen).populate("posts").exec(function (err, reciever) {
     
+    //     global.send=reciever;
     
-    // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaccccccccccccccccccccccccccccccccccccccccc/user/'+sen+'/chat');
+    // });
+    // console.log(rec+"rec")
+    // console.log(sen+"sen")
+    
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaccccccccccccccccccccccccccccccccccccccccc/user/'+sen+'/chat');
     socket.to('/user/'+sen+'/chat').broadcast.emit('chat-message', { message: message, rec:rec,sen:sen})
 
     User.findById(rec,function (err, reciever) {
-   
+        // console.log(rec+"rec")
+        // console.log(sen+"sen")
+        // console.log(reciever+"reciever")
+           
+        // console.log(reciever)
+        // console.log(rec) 
+        
         var flag = 0;
         if (err) {
             console.log(err);
@@ -307,7 +424,7 @@ socket.join('/user/'+rec+'/chat')
                 // io.emit('room-created');
 console.log("chuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
             };
-            setTimeout(a, 200);
+            setTimeout(a, 2000);
         }
     });
 
