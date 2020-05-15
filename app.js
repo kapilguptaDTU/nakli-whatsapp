@@ -169,13 +169,13 @@ app.use("/", userRoutes);
 
 // LISTENING AT 3000 //
 
-server.listen(3000, () => {
-    console.log('Express server started at port 3000');
+// server.listen(3000, () => {
+//     console.log('Express server started at port 3000');
 
-}); 
+// }); 
 
-// server.listen(process.env.PORT,process.env.IP);
-// console.log("DBMS V8 started");
+server.listen(process.env.PORT,process.env.IP);
+console.log("DBMS V8 started");
   
 
 io.on('connection', socket => {
