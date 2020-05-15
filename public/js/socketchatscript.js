@@ -47,6 +47,7 @@ if (messageForm != null) {
     // appender(`You: ${message}`)
     mainappender(message,'sender');
     // console.log(reccomp);
+    console.log("main currentwalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+currentwala);
     socket.emit('send-chat-message', rec, sen, message)
     messageInput.value = ''
   })
