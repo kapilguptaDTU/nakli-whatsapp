@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>LOGIN CONNECT</title>
+	<title>LOGIN ERP</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -25,31 +25,22 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/util.css">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
 	<link rel="stylesheet" href="/stylesheets/gangnamstyle.css">
-	<link rel="stylesheet" href="/stylesheets/potterstyle.css">
+	<!-- <link rel="stylesheet" href="/stylesheets/potterstyle.css"> -->
 <!--===============================================================================================-->
 <style>
 	.login100-form-avatar img {
     width: 100%;
     height: -webkit-fill-available;
 }
-ul li a{
-	font-family: 'Montserrat Alternates', sans-serif;
-}a{
-	font-family: 'Montserrat Alternates', sans-serif;
-} 
-*{
-	font-family: 'Montserrat Alternates', sans-serif;
-
-}
 </style>
 </head>
-<body id="bdy" style="font-family: 'Montserrat Alternates', sans-serif;">
+<body id="bdy">
 	
 	<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 		  <span class="navbar-toggler-icon"></span>
 		</button>
-		<a class="navbar-brand" href="#"> CONNECT</a>
+		<a class="navbar-brand" href="#">ERP</a>
 	  
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 		  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -64,7 +55,7 @@ ul li a{
 				<%}%>
 			</li>
 			<li class="nav-item">
-                <a class="nav-link" href="/posts">View All Posts<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/posts">View All Assignments<span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/">Go Back<span class="sr-only">(current)</span></a>
@@ -98,7 +89,7 @@ ul li a{
 					</div>
 
 					<span class="login100-form-title p-t-20 p-b-45" style="font-family: 'Montserrat Alternates', sans-serif;">
-						CONNECT
+						ERP
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-10 "style="font-family: 'Montserrat Alternates', sans-serif;" data-validate = "Username is required">
@@ -125,17 +116,27 @@ ul li a{
 
 					<div class="text-center w-full p-t-25 p-b-230">
 						<a href="/register" class="txt1" style="font-family: 'Montserrat Alternates', sans-serif;">
-							Sign Up if new!   <i class="fa fa-long-arrow-right"></i>	
+							Sign Up as a student!   <i class="fa fa-long-arrow-right"></i>	
 						</a>
-						<div class="gang"></div>
+						<!-- <div class="gang"></div> -->
 
 					</div>
-					<div class="text-center w-full">
+
+					<div class="text-center w-full p-t-25 p-b-230">
+						<a href="/register" class="txt1" style="font-family: 'Montserrat Alternates', sans-serif;">
+							Sign Up as a teacher!   <i class="fa fa-long-arrow-right"></i>	
+						</a>
+						<!-- <div class="gang"></div> -->
+
+					</div>
+
+
+					<!-- <div class="text-center w-full">
 						<a class="txt1" href="/register" style="font-family: 'Montserrat Alternates', sans-serif;">
 							Create new account
 							<i class="fa fa-long-arrow-right"></i>						
 						</a>
-					</div>
+					</div> -->
 				</form>
 			</div>
 		</div>
@@ -149,12 +150,14 @@ ul li a{
 	<script src="/js/popper.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+	<script src="/js/select2.min.js"></script>
 <!--===============================================================================================-->
 <script src="/js/main.js"></script>
 	
 <script src='https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.7.1/bodymovin.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script><script  src="./script.js"></script>
+
+<!-- <script src="/js/pottermain.js"></script> -->
 
 
 </body>
