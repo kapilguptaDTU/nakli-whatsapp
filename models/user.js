@@ -15,6 +15,9 @@ var UserSchema = new mongoose.Schema({
     city:{
         type:String
     },
+    intId:{
+        type:Number
+    },
     state:{
         type:String
     } ,
@@ -22,18 +25,13 @@ var UserSchema = new mongoose.Schema({
         type:String,
         default:"https://cdn.drawception.com/images/panels/2016/12-23/LzmGdeampF-4.png"
     } ,
-    
-
-    description:{
-        type:String,
-        default:"I love this app!!"
-    
-    },
-
-
-    highscore:{
-        type:String,
-        default:'0'
+    description:{                                                     
+        type:String,                                                            
+        default:"I love this app!!"                                                        
+    },                                   
+    highscore:{                                                                
+        type:String,                                                               
+        default:'0'                                                           
     } ,
        posts: [
           {
@@ -85,8 +83,27 @@ var UserSchema = new mongoose.Schema({
                     type:String
                 }
             } 
-        ]
-        
+        ],
+        isTeacher:{
+         type:Boolean,
+         default:false
+        },
+        isAdmin:{
+         type:Boolean,
+         default:false
+        },
+        givenTo:[String],
+        givenAmount:[Number],
+        takenFrom:[String],
+        takenAmount:[Number],
+        totalYouOwe:{
+            type:Number,
+            default:0
+        },
+        totalYouWillRecieve:{
+            type:Number,
+            default:0
+        },
         
 
 });
