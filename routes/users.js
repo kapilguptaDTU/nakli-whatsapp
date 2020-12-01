@@ -33,7 +33,7 @@ router.get('/',isLoggedIn, (req, res) => {
 
 global.globalUsers=docs;
 
-            res.render("user/nakliWhatsapp", {
+            res.render("user/nakliERP", {
                 users: docs
             });
         } else {
@@ -128,13 +128,26 @@ router.get("/user/:id/friend", function (req, res) {
 
 
 
-
-
 router.get("/register", function (req, res) {
     res.render("user/register");
 });
+
+router.get("/registerteacher", function (req, res) {
+    res.render("user/registerERP");
+});
 //handle sign up logic
 router.post("/register", function (req, res) {
+   
+    User.find({}, (err, docs) => {
+        if (!err) {
+
+global.globalUsers=docs;
+console.log("global user size while registering "+globalUsers.length);
+        } else {
+            console.log('Error while retrieving user list :' + err);
+        }
+    }).lean();
+    function nnnn() {
     var newUser = new User({
         username: req.body.username,
         mobile: req.body.mobile,
@@ -142,8 +155,10 @@ router.post("/register", function (req, res) {
         city: req.body.city,
         highscore: '0',
         profileImage:req.body.profileImage,
-        description:req.body.description
-
+        description:req.body.description,
+        intId:globalUsers.length,
+        isTeacher:false,
+        isAdmin:false
     });
     User.register(newUser, req.body.password, function (err, user) {
         if (err) {
@@ -154,6 +169,80 @@ router.post("/register", function (req, res) {
             res.redirect("/");
         });
     });
+}
+setTimeout(nnnn,1000);
+});
+router.post("/registerteacher", function (req, res) {
+   
+    User.find({}, (err, docs) => {
+        if (!err) {
+
+global.globalUsers=docs;
+console.log("global user size while registering "+globalUsers.length);
+        } else {
+            console.log('Error while retrieving user list :' + err);
+        }
+    }).lean();
+    function nnnn() {
+    var newUser = new User({
+        username: req.body.username,
+        mobile: req.body.mobile,
+        state: req.body.state,
+        city: req.body.city,
+        highscore: '0',
+        profileImage:req.body.profileImage,
+        description:req.body.description,
+        intId:globalUsers.length,
+        isTeacher:true,
+        isAdmin:false
+    });
+    User.register(newUser, req.body.password, function (err, user) {
+        if (err) {
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function () {
+            res.redirect("/");
+        });
+    });
+}
+setTimeout(nnnn,1000);
+});
+router.post("/registeradmin", function (req, res) {
+   
+    User.find({}, (err, docs) => {
+        if (!err) {
+
+global.globalUsers=docs;
+console.log("global user size while registering "+globalUsers.length);
+        } else {
+            console.log('Error while retrieving user list :' + err);
+        }
+    }).lean();
+    function nnnn() {
+    var newUser = new User({
+        username: req.body.username,
+        mobile: req.body.mobile,
+        state: req.body.state,
+        city: req.body.city,
+        highscore: '0',
+        profileImage:req.body.profileImage,
+        description:req.body.description,
+        intId:globalUsers.length,
+        isTeacher:false,
+        isAdmin:true
+    });
+    User.register(newUser, req.body.password, function (err, user) {
+        if (err) {
+            console.log(err);
+            return res.render("register");
+        }
+        passport.authenticate("local")(req, res, function () {
+            res.redirect("/");
+        });
+    });
+}
+setTimeout(nnnn,1000);
 });
 
 // show login form
