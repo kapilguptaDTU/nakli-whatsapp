@@ -8,21 +8,6 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
-<style>
-	.login100-form-avatar img {
-    width: 100%;
-    height: -webkit-fill-available;
-}
-ul li a{
-	font-family: 'Montserrat Alternates', sans-serif;
-}a{
-	font-family: 'Montserrat Alternates', sans-serif;
-} 
-*{
-	font-family: 'Montserrat Alternates', sans-serif;
-
-}
-</style>
 
 </head>
 <body style="bottom:0;padding-bottom:0;font-family: 'Montserrat Alternates', sans-serif;">
@@ -33,7 +18,7 @@ ul li a{
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 				  <span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand" href="#"> CONNECT</a>
+				<a class="navbar-brand" href="#">ERP</a>
 			  
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 				  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -96,7 +81,8 @@ ul li a{
 
 				<a class="btn btn-dark" href="/user/<%=user._id%>/chat" style="padding: 9px;margin-right: 2rem;">Send Message</a>
 
-				<a class="btn btn-light" href="/user/<%= user._id %>/post/new" style="padding: 9px;">Add a post</a>
+				<%if(user.isTeacher||user.isAdmin){%><a class="btn btn-light" href="/user/<%= user._id %>/post/new" style="padding: 9px;">Add a post</a>
+				<%}%>
 				<a class="btn btn-primary" href="/posts" style="padding: 9px;">See all posts!!</a>
 
 			</div>
@@ -133,7 +119,7 @@ ul li a{
 
 			<% user.posts.forEach(function(post){ %>
 			<div class="gallery-item" tabindex="0">
-				<img src="<%=post.image%>" class="gallery-image" alt="NOT FOUND"  onerror=this.src="https://img.traveltriangle.com/blog/wp-content/uploads/2020/01/cover-for-Places-To-Visit-In-Rishikesh-In-May_16-Jan.jpg">
+				<img src="<%=post.image%>" class="gallery-image" alt="NOT FOUND"  onerror=this.src="https://www.thenfapost.com/wp-content/uploads/2020/08/unnamed-2.png">
 				<a href="/post/<%= post._id %> ">
 				<div class="gallery-item-info">
 
